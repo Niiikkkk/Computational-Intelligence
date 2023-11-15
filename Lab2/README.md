@@ -1,1 +1,0 @@
-Worked with Riccardo Cardona
