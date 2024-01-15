@@ -22,4 +22,4 @@ We tried a lot of different parameters for the Reinforcement Learning player, bu
 and ``RL_player_2``. The parameters are reported in the notebook.
 
 ## Collaboration
-For this project, I collaborate with [Nicholas Berardo s319441](https://github.com/Niiikkkk/Computational-Intelligence/tree/main)
+For this project, I collaborate with [Riccardo Cardona s319439](https://github.com/Riden15/Computational-Intelligence)
