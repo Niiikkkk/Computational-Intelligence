@@ -2480,3 +2480,94 @@ rl_player.load_policy('RL_player_1')
 g = Game()
 winner = g.play(rl_player, human_player, print_flag=True)
 ```
+
+# Reviews
+
+## Lab-2
+### Wrote
+https://github.com/gabriquaranta/computational-intelligence
+
+The main concept, like fitness, mutation and xover are like mine, but we have 2 different
+representation of the population. My individual is a set of probability, his is a strategy. His population is composed of strategy, for example 50 strategy. So at the end of the day he selects the best strategy in terms of the one that has more wins.
+
+
+https://github.com/giacomofantino/computational-intelligence/
+
+This guy uses as fitness the same concept as mine. Instead of number of wins he uses some score, but the main idea is the same. As population he uses the an array of moves. He selects the parent based on the fitness, then he uses mutation and xover like me.
+
+### Received
+
+Hi, this is my review of your lab2 solution.
+The work is very good, but I have some ideas that maybe can improve your approach a little:
+I think your fitness underestimates your strategy because you always play second, fifty-fifty is better.
+reducing the size of the population that will be preserved, in my opinion can accelerate convergence towards the optimal.
+For the rest excellent work.
+
+
+Thanks for the review !
+You are right about the fitness function, i'll change it.
+
+
+## Lab-9
+### Wrote
+https://github.com/albyrika/computational-intelligence
+
+Well, seems a good work.
+```python
+self.p1 = numpy.random.normal(0.5, self.sigma)
+```
+Can’t this be only a simple random() call? So it’ll return a number [0;1]? Then you are looping through the n loci that is the number of bits you want to change. But by definition (I think) that the mutation is something like “Change one individual with a certain probability”, but here you are changing n loci individual with the same probability. Is there any xover?
+
+https://github.com/YaldaMobargha/Computational-intelligence
+
+Good job,
+```python
+points = [randint(0, len(genome1)) for _ in range(num_points)]
+```
+The only thing I can say is that this random may return the same number, so it may be useful to clear the duplicates. For the rest it seems right
+
+### Received
+
+Hi Nicholas!
+Your code is clear and easy to follow, and it implements a good solution to the problem.
+I have a few suggestions to improve its quality:
+
+While the code is readable, adding more annotations and comments would be beneficial for better understanding of your solution.
+The choice of performing a pre-selection before the tournament is interesting but I don't think it leads to good results, as it reduces the diversity of the population. You could instead try using other methods to increase genetic pressure.
+I recommend checking, at each iteration, whether the solution is converging so that you can stop the cycle prematurely. This way you can avoid executing loops that do not lead to improvements in the solution, thus reducing execution time.
+Your results are clear and readable, however I still suggest the use of graphs to provide a visual comparison of the results at different istances of the problem.
+
+I hope my review was helpful and keep up the good work!
+
+---
+
+The GA is correctly written and do is job, but there are some small tweaks noteworthy:
+
+In the function one_cut_xover, even if not in use, the range of the cut_point should be set to (0, len-1) because if is len you can obtain a xover in which you just invert the two parents genomes
+I don't known why in the parent selection, before the tournament, you sort the population and select only the best, when the aim of the tournament selection is to give to everyone the possibility to compete to become parent, in this way you deterministically reduce the population to the best half prior to make the tournamet. In each case if you want to mantain this approach I strongly recommend you to move the sorting outside the parent selection because in this case you re-sort the population for each parent.
+
+As said above in general the GA is well implemented, maybe to increase the performance you can try some of the techniques presented in class regarding the promoting of diversity.
+
+## Lab-10
+
+### Wrote
+https://github.com/class1c-j/polito-ci-labs/tree/main/labs/4 tic tac toe
+
+Hi, nice code. In the Q-Learning, as you also wrote, you decided to update the q-table every step instead of every episode. I also saw that you add a reward if the agent is able to block the opponent. That’s good. Just one thing, did you try to update the q-table every episode instead of every move to see how that influence the performance?
+
+https://github.com/ArmanBehkish/computational-intelligence 2324
+
+Hi, the code seems to be right. I just don’t understand how the reward is computed. Also there’s no exploration in the move of the RL, maybe you can add a 20% of making a random move and not always the optimal one.
+
+### Received
+
+The work you've done is really good; the code is easy to understand because of the comments. By trying out different methods, it's clear that Q-learning performs better for this kind of application.
+
+A suggestion I can give you to improve the Q-learning performance is to try using a dynamic epsilon parameter that varies during training. This way, you can emphasize exploration more at the beginning and then, in the final part of the training, focus more on exploitation!
+
+Anyway, congratulations on the excellent work!
+
+---
+
+The code is comprehensible and well-structured. Your implementation of Q-learning is encapsulated within the RLPlayer class, specifically in the give_rew function. However, it is crucial to observe that traditional Q-learning involves updating the Q-function based on accumulated experience, which includes the current state, the taken action, and the obtained reward. In your implementation, it appears that the update is influenced solely by the state, rather than considering the complete set of state, action, and reward information associated with the accumulated experience.
+You might also want to consider conducting various tests by modifying the parameters of the function to find the optimal values for learning.
